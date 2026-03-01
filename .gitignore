@@ -1,6 +1,8 @@
 node_modules/
+database.sqlite
 .env
 *.db
 *.sqlite
 coverage/
+.DS_Store
 
