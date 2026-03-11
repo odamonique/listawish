@@ -1,5 +1,7 @@
 const bcrypt = require('bcrypt');
 const usuarioModel = require('../models/usuarioModel');
+const jwt = require('jsonwebtoken');
+const jwtConfig = require('../config/jwt')
 
 //Função de registrar usuario
 const registrarUsuario = async (req, res) => {
@@ -76,6 +78,13 @@ const loginUsuario = async (req,res) => {
             });
         }
 
+        //Criar um JWT para o usuario autenticado
+        const token = jwt.sign(
+            {id: usuario.id},
+            jwtConfig.secret,
+            {expiresIn: jwtConfig.expiresIn}
+        );
+
         //Se o email e senha estiverem corretos, realizar o login
         return res.status(200).json({
             message: "Login realizado com sucesso",
@@ -83,7 +92,8 @@ const loginUsuario = async (req,res) => {
                 id: usuario.id,
                 nome: usuario.nome,
                 email:usuario.email
-            }
+            },
+            token
         });
 
     } catch (error) {
