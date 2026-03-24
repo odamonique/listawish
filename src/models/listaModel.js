@@ -1,0 +1,47 @@
+const db = require("../config/database");
+
+
+//criarLista()
+const criarLista = (titulo, descricao, dataExpiracao, linkToken, usuarioId) => {
+
+    return new Promise((resolve, reject) => {
+        
+        const sql = `INSERT INTO listas 
+        (titulo, descricao, dataExpiracao, linkToken, usuarioId)
+        VALUES (?, ?, ?, ?, ?)`;
+
+        db.run(sql, [titulo, descricao, dataExpiracao, linkToken, usuarioId], function (err){
+            if (err) {
+                reject(err);
+            }else{
+                resolve({
+                    id: this.lastID,
+                    titulo,
+                    descricao,
+                    dataExpiracao,
+                    linkToken,
+                    usuarioId
+                })
+            }
+        });
+    })
+};
+
+//buscarListasPorUsuario()
+const buscarListasPorUsuario = (usuarioId) => {
+
+    return new Promise((resolve, reject) => {
+        
+        const sql = `SELECT * FROM listas WHERE usuarioId = ?`;
+
+        db.all(sql, [usuarioId], (err, rows) => {
+            if (err) {
+                reject(err);
+            }else{
+                resolve(rows);
+            }
+        });
+    })
+};
+
+module.exports ={criarLista, buscarListasPorUsuario};
