@@ -44,4 +44,21 @@ const buscarListasPorUsuario = (usuarioId) => {
     })
 };
 
-module.exports ={criarLista, buscarListasPorUsuario};
+//buscarListaPorToken()
+const buscarListaPorToken = (linkToken) => {
+
+    return new Promise((resolve, reject) => {
+
+        const sql = `SELECT * FROM listas WHERE linkToken = ?`;
+
+        db.get(sql, [linkToken], (err, row) => {
+            if (err) {
+                reject(err);
+            }else{
+                resolve(row);
+            }
+        });
+    });
+};
+
+module.exports ={criarLista, buscarListasPorUsuario, buscarListaPorToken};

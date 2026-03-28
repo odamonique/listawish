@@ -5,6 +5,7 @@ require('dotenv').config();
 const usuarioRoutes = require('./routes/usuarioRoutes');
 const listaRoutes = require('./routes/listaRoutes');
 const itemRoutes = require('./routes/itemRoutes');
+const publicRoutes = require('./routes/publicRoutes');
 
 const app = express();
 const PORT = 3000;
@@ -14,6 +15,7 @@ app.use(express.json());
 app.use('/usuarios', usuarioRoutes);
 app.use('/listas', listaRoutes);
 app.use('/itens', itemRoutes);
+app.use('/public', publicRoutes);
 
 app.get('/test', (req, res) =>{
     res.send("Server working!");
