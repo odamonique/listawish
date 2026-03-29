@@ -28,7 +28,7 @@ const criarItem = (nome, url, listaId) => {
 const buscarItensLista = (listaId) =>{
 
     return new Promise((resolve, reject) => {
-        
+        //Busca pelo id da lista
         const sql = `SELECT * FROM itens WHERE listaId = ?`;
 
         db.all(sql, [listaId], (err, rows) => {
@@ -59,4 +59,21 @@ const atualizarStatusItem = (id, status) => {
 
 };
 
-module.exports = {criarItem, buscarItensLista, atualizarStatusItem};
+//buscarItem()
+const buscarItem = (id) => {
+
+    return new Promise((resolve, reject) => {
+        //Busca item pelo id do item
+        const sql = `SELECT * FROM itens WHERE id = ?`;
+
+        db.get(sql, [id], (err, row) => {
+            if(err){
+                reject(err);
+            }else{
+                resolve(row)
+            }
+        });
+    });
+};
+
+module.exports = {criarItem, buscarItensLista, atualizarStatusItem, buscarItem};
