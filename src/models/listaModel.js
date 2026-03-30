@@ -61,4 +61,19 @@ const buscarListaPorToken = (linkToken) => {
     });
 };
 
-module.exports ={criarLista, buscarListasPorUsuario, buscarListaPorToken};
+//buscarListaPorId
+const buscarListaPorId = (id) => {
+    return new Promise((resolve, reject) => {
+        const sql = `SELECT * FROM listas WHERE id =?`;
+
+        db.get(sql, [id], (err, row) => {
+            if (err) {
+                reject(err);
+            }else{
+                resolve(row);
+            }
+        });
+    });
+};
+
+module.exports ={criarLista, buscarListasPorUsuario, buscarListaPorToken, buscarListaPorId};

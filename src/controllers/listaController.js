@@ -107,4 +107,4 @@ const visualizarListaPublica = async (req, res) =>{
     }
 };
 
-module.exports = {criarLista, mostrarListas, visualizarListaPublica};
+module.exports = {criarLista, mostrarListas, visualizarListaPublica}; 

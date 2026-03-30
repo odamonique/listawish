@@ -16,7 +16,7 @@ const authMiddleware = (req, res, next) =>{
     const parts = authHeader.split(' ');
 
     if (parts.length !== 2) {
-        res.status(401).json({
+        return res.status(401).json({
             error: "Token mal formatado"
         });
     }
@@ -32,7 +32,7 @@ const authMiddleware = (req, res, next) =>{
     //Verificar o token
     jwt.verify(token, jwtConfig.secret, {algorithms: [jwtConfig.algorithm]}, (err, decoded) => {
         if (err) {
-            res.status(401).json({
+            return res.status(401).json({
                 error: "Token inválido"
             });
         }
