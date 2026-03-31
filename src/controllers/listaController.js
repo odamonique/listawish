@@ -107,4 +107,34 @@ const visualizarListaPublica = async (req, res) =>{
     }
 };
 
-module.exports = {criarLista, mostrarListas, visualizarListaPublica}; 
+//deletarLista()
+const deletarLista = async (req, res) => {
+
+    try {
+        const {id} = req.params;
+    
+        const resultado = await listaModel.deletarLista(id);
+
+        if (resultado.deleted === 0) {
+            return res.status(404).json({
+                error: "Lista não encontrada"
+            });
+        }
+        return res.status(200).json({
+            messsage: "Lista deletada com sucesso"
+        });
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({
+            error: "Erro interno do servidor"
+        });
+    }
+
+};
+
+module.exports = {
+    criarLista, 
+    mostrarListas, 
+    visualizarListaPublica,
+    deletarLista
+}; 

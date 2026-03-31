@@ -76,4 +76,27 @@ const buscarListaPorId = (id) => {
     });
 };
 
-module.exports ={criarLista, buscarListasPorUsuario, buscarListaPorToken, buscarListaPorId};
+//deletarLista()
+const deletarLista = (id) => {
+
+    return new Promise((resolve, reject) => {
+        
+        const sql = `DELETE FROM listas WHERE id = ?`;
+
+        db.run(sql, [id], function (err) {
+            if (err) {
+                reject(err);
+            }else{
+                resolve({deleted: this.changes});
+            }
+        });
+    });
+};
+
+module.exports ={
+    criarLista, 
+    buscarListasPorUsuario, 
+    buscarListaPorToken, 
+    buscarListaPorId,
+    deletarLista
+};

@@ -23,7 +23,9 @@ db.serialize(()=>{
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         nome TEXT NOT NULL,
         email TEXT UNIQUE NOT NULL,
-        senhaHash TEXT NOT NULL)`);
+        senhaHash TEXT NOT NULL)`, (err) => {
+        if (err) console.error("Erro tabela usuarios:", err.message);
+    });
 
     //Lists table
     db.run(`CREATE TABLE IF NOT EXISTS listas(
@@ -34,7 +36,9 @@ db.serialize(()=>{
         linkToken TEXT UNIQUE NOT NULL, 
         usuarioId INTEGER NOT NULL,
         FOREIGN KEY (usuarioId) REFERENCES usuarios(id)
-        )`);
+        )`, (err) => {
+        if (err) console.error("Erro tabela listas:", err.message);
+    });
 
     //Items table 
     db.run(`CREATE TABLE IF NOT EXISTS itens(
@@ -43,8 +47,10 @@ db.serialize(()=>{
         url TEXT,
         status TEXT NOT NULL DEFAULT 'disponivel',
         listaId INTEGER NOT NULL,
-        FOREIGN KEY (listaId) REFERENCES listas(id)
-        )`);
+        FOREIGN KEY (listaId) REFERENCES listas(id) ON DELETE CASCADE
+        )`,(err) => {
+        if (err) console.error("Erro tabela itens:", err.message);
+    });
 
 });
 

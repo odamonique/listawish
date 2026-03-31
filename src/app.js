@@ -25,3 +25,14 @@ app.listen(PORT, () => {
     console.log(`Server working on port ${PORT}`);
 });
 
+//Tratar erro
+app.use((err, req, res, next) => {
+    //Erro de parse do JSON
+    if(err instanceof SyntaxError && err.status === 400 && 'body' in err){
+        return res.status(400).json({
+            error: "JSON invalido"
+        });
+    }
+    next();
+});
+

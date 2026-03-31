@@ -3,9 +3,9 @@ const listaModel = require('../models/listaModel');
 //Verificar dono da lista
 const verificarDonoDaLista = async (req, res, next) => {
     try {
-        const listaId = req.params.listaId || req.body.listaId;
+        const listaId = Number(req.params.listaId || req.params.id || req.body.listaId);
 
-        if (!listaId) {
+        if (!listaId || isNaN(listaId)) {
             return res.status(400).json({
                 error: "ListaId não informado"
             });
@@ -18,13 +18,17 @@ const verificarDonoDaLista = async (req, res, next) => {
                 error: "Lista não encontrada"
             });
         }
-        
+
         //verificar dono da lista
         if (lista.usuarioId !== req.usuarioId) {
             return res.status(403).json({
                 error: "Acesso negado: Esta lista não pertence ao usuario"
             });
         }
+        
+        //Para reutilização 
+        req.lista = lista;
+
         next();
     } catch (error) {
         console.error(error);
