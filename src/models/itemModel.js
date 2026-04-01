@@ -76,4 +76,26 @@ const buscarItem = (id) => {
     });
 };
 
-module.exports = {criarItem, buscarItensLista, atualizarStatusItem, buscarItem};
+//deletarItem()
+const deletarItem = (id) => {
+    return new Promise((resolve, reject) => {
+        
+        const sql = `DELETE FROM itens WHERE id = ?`;
+
+        db.run(sql, [id], function (err) {
+            if (err) {
+                reject(err);
+            }else{
+                resolve({deleted: this.changes});
+            }
+        });
+    });
+}
+
+module.exports = {
+    criarItem, 
+    buscarItensLista, 
+    atualizarStatusItem, 
+    buscarItem,
+    deletarItem
+};

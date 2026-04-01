@@ -102,4 +102,41 @@ const atualizarStatus = async (req, res) => {
     }
 };
 
-module.exports = {criarItem, mostrarItens, atualizarStatus};
+//deletarItem()
+const deletarItem = async (req,res) => {
+    try {
+        const item = req.item;
+
+        //Não deletar item marcado como comprado
+        if (item.status === "comprado") {
+            return res.status(400).json({
+                error: "Não é possivel deletar um item já comprado"
+            });
+        }
+
+        const resultado = await itemModel.deletarItem(item.id);
+
+        if (resultado.deleted === 0) {
+            return res.status(404).json({
+                error: "Item não encontrado"
+            });
+        }
+
+        return res.status(200).json({
+            message: "Item deletado com sucesso"
+        });
+
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({
+            error: "Erro interno do servidor"
+        })
+    }
+}
+
+module.exports = {
+    criarItem,
+    mostrarItens, 
+    atualizarStatus,
+    deletarItem
+};
