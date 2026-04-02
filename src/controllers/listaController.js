@@ -132,9 +132,68 @@ const deletarLista = async (req, res) => {
 
 };
 
+//atualizarLista()
+const atualizarLista = async (req, res) => {
+    try {
+    
+        const {titulo, descricao, dataExpiracao} = req.body;
+
+        //Usar middleware
+        const lista = req.lista;
+
+        //Validação se nenhum campo for enviado
+        if (!titulo && !descricao && !dataExpiracao) {
+            return res.status(400).json({
+                error: "Nenhum campo foi enviado para ser atualizado"
+            });
+        }
+
+        //Se um novo valor não for enviado, manter o antigo
+        const novoTitulo = titulo || lista.titulo;
+        const novaDescricao = descricao !== undefined ? descricao : lista.descricao;
+        const novaDataExpiracao = dataExpiracao || lista.dataExpiracao;
+
+        //Validar a data
+        if (novaDataExpiracao) {
+            const agora = new Date();
+            const data = new Date(novaDataExpiracao);
+            
+            if (data <= agora) {
+                return res.status(400).json({
+                    error: "Data de expiração deve ser futura"
+                });
+            }
+        }
+
+        const resultado = await listaModel.atualizarLista(
+            lista.id, 
+            novoTitulo,
+            novaDescricao,
+            novaDataExpiracao
+        );
+
+        if (resultado.updated === 0) {
+            return res.status(404).json({
+                error: "Lista não encontrada"
+            })
+        }
+
+        return res.status(200).json({
+            message: "Lista atualizada com sucesso"
+        });
+
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({
+            error: "Erro interno do servidor"
+        });
+    }
+}
+
 module.exports = {
     criarLista, 
     mostrarListas, 
     visualizarListaPublica,
-    deletarLista
+    deletarLista,
+    atualizarLista
 }; 

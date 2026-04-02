@@ -14,4 +14,7 @@ router.get('/', authMiddleware, listaController.mostrarListas);
 //Rota de deletar lista
 router.delete('/:id', authMiddleware, verificarDonoDaLista, listaController.deletarLista);
 
+//Rota de atualizar lista 
+router.put('/:id', authMiddleware, verificarDonoDaLista, listaController.atualizarLista);
+
 module.exports = router;

@@ -93,10 +93,28 @@ const deletarLista = (id) => {
     });
 };
 
+//atualizarLista()
+const atualizarLista = (id, titulo, descricao, dataExpiracao) => {
+    return new Promise((resolve, reject) => {
+        
+        const sql = `UPDATE listas SET titulo = ?, 
+        descricao = ?, dataExpiracao = ? WHERE id = ?`;
+
+        db.run(sql, [titulo, descricao, dataExpiracao, id], function (err) {
+            if (err) {
+                reject(err);
+            }else{
+                resolve({updated: this.changes});
+            }
+        });
+    });
+};
+
 module.exports ={
     criarLista, 
     buscarListasPorUsuario, 
     buscarListaPorToken, 
     buscarListaPorId,
-    deletarLista
+    deletarLista,
+    atualizarLista
 };
