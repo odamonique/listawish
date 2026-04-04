@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minhas Listas</title>
+</head>
+<body>
+
+    <h2>Minhas Listas</h2>
+
+    <button onclick="logout()">Sair</button>
+
+    <h3>Criar Nova Lista</h3>
+
+    <form id="formLista">
+        <input type="text" id="titulo" placeholder="Título" require><br>
+        <input type="text" id="descricao" placeholder="Descrição"><br>
+        <input type="date" id="dataExpiracao" required><br>
+        <button type="submit">Criar</button>
+    </form>
+
+    <h3>Suas Listas</h3>
+
+    <ul id="listas"></ul>
+
+    <p id="erro"></p>
+
+    <script src="js/api.js"></script>
+    <script src="js/listas.js"></script>
+</body>
+</html>
