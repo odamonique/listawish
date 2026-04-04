@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+</head>
+<body>
+    <h2>Cadastro</h2>
+    
+    <!--Formulario de cadastro-->
+    <form id="cadastroForm">
+        <input type="text" id="nome" placeholder="Nome" required><br>
+        <input type="email" id="email" placeholder="Email" required><br>
+        <input type="password" id="senha" placeholder="Senha" required><br>
+        <button type="submit">Cadastrar</button>
+    </form>
+
+    <p id="erro"></p>
+
+    <script src="js/api.js"></script>
+    <script>
+        //Captura o envio do formulario 
+        document.getElementById("cadastroForm").addEventListener(
+            "submit", async (e) => {
+                //Evita que a pagina recarregue
+                e.preventDefault();
+
+                const nome = document.getElementById("nome").value;
+                const email = document.getElementById("email").value;
+                const senha = document.getElementById("senha").value;
+
+                try {
+                    //Chama função de requisição 
+                    await apiRequest("/usuarios/registro", "POST", {
+                        nome, email, senha
+                    });
+                    //Redireciona para a página de login
+                    window.location.href = "login.html";
+
+                } catch (error) {
+                    //Mostra mensagem de erro 
+                   document.getElementById("erro").innerText = error.message;
+                }
+            }
+        )
+    </script>
+</body>
+</html>
