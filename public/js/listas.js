@@ -21,16 +21,32 @@ document.getElementById("formLista").addEventListener("submit", async (e) => {
     const descricao = document.getElementById("descricao").value;
     const dataExpiracao = document.getElementById("dataExpiracao").value;
 
+    //Pegar id
+    const id = e.target.dataset.id;
+
     try {
-        //Chama função de requisição 
-        await apiRequest('/listas', "POST", {
+        if (id) {
+            //editar
+            await apiRequest(`/listas/${id}`, "PUT", {
+                titulo, descricao, dataExpiracao
+            });
+
+            //Limpar modo de edição 
+            delete e.target.dataset.id;
+        }else{
+            //Criar 
+            await apiRequest('/listas', "POST", {
             titulo, descricao, dataExpiracao
-        });
+            });
+        }
 
         //Atualiza as listas 
         carregarListas();
         //limpar campos do formulario 
         e.target.reset();
+
+        //Voltar o botão para modo de criar 
+        document.getElementById("btnSubmit").innerText = "Criar";
 
     } catch (error) {
         document.getElementById("erro").innerText = error.message;
@@ -53,6 +69,8 @@ async function carregarListas() {
             li.innerHTML =`
             <strong>${lista.titulo}</strong> - ${lista.descricao || ""}<br>
             Expira: ${new Date(lista.dataExpiracao).toLocaleDateString('pt-BR')}<br> 
+            <button onclick = "editarLista(${lista.id}, '${lista.titulo}', 
+            '${lista.descricao || ''}', '${lista.dataExpiracao}')">Editar</button>
             <button onclick = "verLista('${lista.id}')">Abrir</button>
             <button onclick = "deletarLista(${lista.id})">Deletar</button>
             <hr>`;
@@ -87,3 +105,19 @@ function verLista(id) {
     window.location.href = `lista.html?id=${id}`;
 };
 
+//Editar lista
+function editarLista(id, titulo, descricao, dataExpiracao) {
+
+    document.getElementById("titulo").value = titulo;
+    document.getElementById("descricao").value = descricao;
+
+    //Mudar formato da data
+    const data = new Date(dataExpiracao).toISOString().split("T")[0];
+    document.getElementById("dataExpiracao").value = data;
+
+    //Salvar id editado 
+    document.getElementById("formLista").dataset.id = id;
+
+    //Mudar botão para modo salvar
+    document.getElementById("btnSubmit").innerText = "Salvar";
+}
