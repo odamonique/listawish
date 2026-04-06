@@ -53,7 +53,7 @@ async function carregarListas() {
             li.innerHTML =`
             <strong>${lista.titulo}</strong> - ${lista.descricao || ""}<br>
             Expira: ${new Date(lista.dataExpiracao).toLocaleDateString('pt-BR')}<br> 
-            <button onclick = "verLista('${lista.linkToken}')">Abrir</button>
+            <button onclick = "verLista('${lista.id}')">Abrir</button>
             <button onclick = "deletarLista(${lista.id})">Deletar</button>
             <hr>`;
 
@@ -83,7 +83,7 @@ async function deletarLista(id) {
 };
 
 //Abrir lista
-function verLista(token) {
-    window.location.href = `lista.html?token=${token}`;
+function verLista(id) {
+    window.location.href = `lista.html?id=${id}`;
 };
 

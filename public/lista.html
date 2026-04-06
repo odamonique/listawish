@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista</title>
+</head>
+<body>
+    <h2>Itens da Lista</h2>
+
+    <button onclick="voltar()">Voltar</button>
+
+    <h3>Adicionar Item</h3>
+
+    <form id="formItem">
+        <input type="text" id="nome" placeholder="Nome do item" required><br>
+        <input type="text" id="url" placeholder="URL"><br>
+        <button type="submit">Adicionar</button>
+    </form>
+
+    <h3>Itens</h3>
+
+    <ul id="itens"></ul>
+
+    <p id="erro"></p>
+
+    <script src="js/api.js"></script>
+    <script src="js/itens.js"></script>
+</body>
+</html>
