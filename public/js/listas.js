@@ -66,14 +66,18 @@ async function carregarListas() {
         listas.forEach(lista => {
             const li = document.createElement("li");
 
+            //Adicionar link publico
+            const link = `${window.location.origin}/lista-publica.html?token=${lista.linkToken}`;
+
             li.innerHTML =`
             <strong>${lista.titulo}</strong> - ${lista.descricao || ""}<br>
             Expira: ${new Date(lista.dataExpiracao).toLocaleDateString('pt-BR')}<br> 
             <button onclick = "editarLista(${lista.id}, '${lista.titulo}', 
             '${lista.descricao || ''}', '${lista.dataExpiracao}')">Editar</button>
             <button onclick = "verLista('${lista.id}')">Abrir</button>
-            <button onclick = "deletarLista(${lista.id})">Deletar</button>
-            <hr>`;
+            <button onclick = "deletarLista(${lista.id})">Deletar</button><br>
+            <a href="${link}" target="_blank">🔗 Link público</a><hr>
+            `;
 
             ul.appendChild(li);
         });
