@@ -76,7 +76,8 @@ async function carregarListas() {
             '${lista.descricao || ''}', '${lista.dataExpiracao}')">Editar</button>
             <button onclick = "verLista('${lista.id}')">Abrir</button>
             <button onclick = "deletarLista(${lista.id})">Deletar</button><br>
-            <a href="${link}" target="_blank">🔗 Link público</a><hr>
+            <a href="${link}" onclick="copiarLink(event, this)" rel="noopener noreferrer" title="Ao clicar, o link será copiado para você compartilhar com seus amigos, e a página da sua lista será aberta para você visualizar!">
+            🔗 Copiar e abrir link</a><hr>
             `;
 
             ul.appendChild(li);
@@ -124,4 +125,34 @@ function editarLista(id, titulo, descricao, dataExpiracao) {
 
     //Mudar botão para modo salvar
     document.getElementById("btnSubmit").innerText = "Salvar";
+};
+
+//Copia o link ao ser clicado
+function copiarLink(e, element) {
+    e.preventDefault();
+        
+    const link = element.href;
+    const textoOriginal = element.innerText;
+
+    //Abrir aba 
+    const novaAba = window.open('', '_blank');
+
+    navigator.clipboard.writeText(link).then(() =>{
+        element.innerText = "✅ Copiado!";
+
+        //voltar o texto depois de 5s
+        setTimeout(() => {
+            element.innerText = textoOriginal;
+        }, 5000);
+        //Redireciona a aba depois de 1s
+        setTimeout(() => {
+            novaAba.location.href = link;
+        }, 1000);
+
+    }).catch(err =>{
+        document.getElementById("erro").innerText = err.message;
+        //Abrir o link mesmo se não for copiado
+        window.open(link, '_blank');
+    });
+
 }
