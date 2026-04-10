@@ -10,7 +10,13 @@ function logout() {
 }
 
 //Carregar listas ao abrir a pagina
-document.addEventListener("DOMContentLoaded", carregarListas);
+document.addEventListener("DOMContentLoaded", () => {
+    carregarListas();
+
+    const hoje = new Date().toISOString().split("T")[0];
+
+    document.getElementById("dataExpiracao").setAttribute("min", hoje);
+});
 
 //Criar lista
 document.getElementById("formLista").addEventListener("submit", async (e) => {
