@@ -29,7 +29,11 @@ const buscarItensLista = (listaId) =>{
 
     return new Promise((resolve, reject) => {
         //Busca pelo id da lista
-        const sql = `SELECT * FROM itens WHERE listaId = ?`;
+        const sql = `SELECT * FROM itens WHERE listaId = ?
+        ORDER BY CASE 
+        WHEN status = 'disponivel' THEN 0
+        WHEN status = 'comprado' THEN 1
+        END`;
 
         db.all(sql, [listaId], (err, rows) => {
             if (err) {

@@ -111,9 +111,9 @@ const visualizarListaPublica = async (req, res) =>{
 const deletarLista = async (req, res) => {
 
     try {
-        const {id} = req.params;
+        const lista = req.lista;
     
-        const resultado = await listaModel.deletarLista(id);
+        const resultado = await listaModel.deletarLista(lista.id);
 
         if (resultado.deleted === 0) {
             return res.status(404).json({
