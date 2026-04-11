@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 require('./config/database');
 require('dotenv').config();
 
@@ -11,7 +12,8 @@ const app = express();
 const PORT = 3000;
 
 app.use(express.json());
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, '../public')));
+
 
 app.use('/usuarios', usuarioRoutes);
 app.use('/listas', listaRoutes);
