@@ -55,7 +55,7 @@ document.getElementById("formLista").addEventListener("submit", async (e) => {
         document.getElementById("btnSubmit").innerText = "Criar";
 
     } catch (error) {
-        document.getElementById("erro").innerText = error.message;
+        toast(error.message);
     }
     
 });
@@ -90,7 +90,8 @@ async function carregarListas() {
         });
         
     } catch (error) {
-        document.getElementById("erro").innerText = error.message;
+        
+        toast(error.message);
     }
 };
 
@@ -107,7 +108,7 @@ async function deletarLista(id) {
         carregarListas();
 
     } catch (error) {
-        alert(error.message);
+        toast(error.message);
     }
 };
 

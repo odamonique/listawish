@@ -9,7 +9,8 @@ async function carregarLista() {
 
     //Validar Token 
     if (!token) {
-        document.getElementById("erro").innerText = "Token não informado";
+        
+        toast(error.message);
     };
 
     console.log(token);
@@ -48,7 +49,8 @@ async function carregarLista() {
 
 
     } catch (error) {
-        document.getElementById("erro").innerText = error.message;
+        
+        toast(error.message);
     }
 };
 
@@ -60,6 +62,6 @@ async function comprarItem(id) {
         carregarLista();
 
     } catch (error) {
-        alert(error.message);
+        toast(error.message);
     }
 }

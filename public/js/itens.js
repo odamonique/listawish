@@ -4,7 +4,7 @@ const listaId = params.get("id");
 
 //Validar o id da lista 
 if (!listaId) {
-    alert("Lista não encontrada");
+    toast("Lista não encontrada");
     window.location.href = "minhas-listas.html";
 }
 
@@ -35,7 +35,7 @@ document.getElementById("formItem").addEventListener("submit", async (e) => {
         e.target.reset();
         
     } catch (error) {
-        document.getElementById("erro").innerText = error.message;
+        toast(error.message);
     }
 
 });
@@ -63,7 +63,7 @@ async function carregarItens() {
         });
 
     } catch (error) {
-        document.getElementById("erro").innerText = error.message;
+        toast(error.message);
     };
 }
 

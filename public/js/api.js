@@ -5,6 +5,11 @@ const API_URL = "http://localhost:3000";
 function getToken() {
     return localStorage.getItem("token");
 }
+//Logout
+function logout() {
+    localStorage.removeItem("token");
+    window.location.href = "login.html";
+}
 
 //Função para fazer requisições http a API
 async function apiRequest(endpoint, method = "GET", body = null) {
@@ -25,6 +30,14 @@ async function apiRequest(endpoint, method = "GET", body = null) {
 
     //Converte a resposta da API em json
     const data = await response.json();
+
+    //Logout automático
+    if (response.status === 401) {
+        localStorage.clear();
+        toast("Sessão expirada. Faça login novamente");
+        setTimeout(() => logout(), 5000);
+        return;
+    }
 
     //Lança erro se a resposta não for ok
     if (!response.ok) {

@@ -14,8 +14,7 @@
         <button type="submit">Entrar</button>
     </form>
 
-    <p id="erro"></p>
-
+    <script src="js/toast.js"></script>
     <script src="js/api.js"></script>
     <script>
         //Captura o envio do formulário
@@ -39,7 +38,7 @@
                 
             } catch (error) {
                 //Mostra mensagem de erro 
-                document.getElementById("erro").innerText = error.message;
+                toast(error.message);
             }
         });
     </script>

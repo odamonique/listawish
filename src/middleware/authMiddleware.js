@@ -9,7 +9,7 @@ const authMiddleware = (req, res, next) =>{
     //Checar se token existe
     if (!authHeader) {
         return res.status(401).json({
-            error: "Token não fornecido"
+            error: "Sua sessão expirou. Faça login novamente."
         });
     }
 
@@ -33,7 +33,7 @@ const authMiddleware = (req, res, next) =>{
     jwt.verify(token, jwtConfig.secret, {algorithms: [jwtConfig.algorithm]}, (err, decoded) => {
         if (err) {
             return res.status(401).json({
-                error: "Token inválido"
+                error: "Sua sessão expirou. Faça login novamente."
             });
         }
 
