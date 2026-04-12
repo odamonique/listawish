@@ -46,5 +46,5 @@ function toast(msg, actionText = null, actionCallback = null) {
 
     setTimeout(() => {
         el.remove();
-    }, 5000);
+    }, 3000);
 }

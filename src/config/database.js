@@ -9,7 +9,10 @@ const db = new sqlite3.Database(dbPath, (err) => {
     if(err){
         console.log('Error to connect to database:', err.message);
     }else{
-        console.log('Database is connected!');
+        if (process.env.NODE_ENV !== "test") {
+            console.log('Database is connected!');
+        }
+        
         //Activate foreign keys
         db.run("PRAGMA foreign_keys = ON");
     }
