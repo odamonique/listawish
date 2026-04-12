@@ -157,7 +157,7 @@ function copiarLink(e, element) {
         }, 1000);
 
     }).catch(err =>{
-        document.getElementById("erro").innerText = err.message;
+        toast(err.message);
         //Abrir o link mesmo se não for copiado
         window.open(link, '_blank');
     });

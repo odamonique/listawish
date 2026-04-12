@@ -9,8 +9,8 @@ async function carregarLista() {
 
     //Validar Token 
     if (!token) {
-        
-        toast(error.message);
+        window.location.href = "/erro.html?tipo=invalido";
+        return;
     };
 
     console.log(token);
@@ -49,8 +49,15 @@ async function carregarLista() {
 
 
     } catch (error) {
-        
-        toast(error.message);
+        if (error.status === 400) {
+            window.location.href = "/erro.html?tipo=invalido";
+        }else if (error.status === 404) {
+            window.location.href = "/erro.html?tipo=404";
+        }else if (error.status === 410) {
+            window.location.href = "/erro.html?tipo=expirado";
+        }else{
+            window.location.href = "/erro.html?tipo=erro";
+        }
     }
 };
 
