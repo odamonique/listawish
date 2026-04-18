@@ -13,8 +13,9 @@ function voltar() {
     window.location.href = "minhas-listas.html";
 };
 
-//Carregar itens
-document.addEventListener("DOMContentLoaded", carregarItens);
+//Carregar titulo da lista e itens
+document.addEventListener("DOMContentLoaded", 
+    () => {carregarTituloLista(); carregarItens()});
 
 //Criar Item
 document.getElementById("formItem").addEventListener("submit", async (e) => {
@@ -39,6 +40,25 @@ document.getElementById("formItem").addEventListener("submit", async (e) => {
     }
 
 });
+//Pegar titulo da lista atual
+async function carregarTituloLista() {
+    try {
+        const listas = await apiRequest("/listas");
+
+        const lista = listas.find(l => l.id == listaId);
+
+        if (!lista) {
+            toast("Lista não encontrada");
+            return;
+        }
+
+        document.getElementById("tituloLista").innerText =
+            `Itens da Lista: ${lista.titulo}`;
+
+    } catch (error) {
+        toast(error.message);
+    }
+}
 
 //Buscar itens 
 async function carregarItens() {
