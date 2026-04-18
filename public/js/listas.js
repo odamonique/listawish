@@ -15,7 +15,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const hoje = new Date().toISOString().split("T")[0];
 
-    document.getElementById("dataExpiracao").setAttribute("min", hoje);
+    //Calendario para data de expiração 
+    flatpickr("#dataExpiracao", {
+        dateFormat: "Y-m-d", 
+        minDate: hoje,
+
+        onchange: function (selectedDates, dateStr, instance) {
+            instance.close();
+        }
+    })
 });
 
 //Criar lista

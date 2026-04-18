@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <title>Minhas Listas</title>
 </head>
 <body>
@@ -16,7 +17,7 @@
     <form id="formLista">
         <input type="text" id="titulo" placeholder="Título" require><br>
         <input type="text" id="descricao" placeholder="Descrição"><br>
-        <input type="date" id="dataExpiracao" required><br>
+        <input type="text" id="dataExpiracao" required><br>
         <button type="submit" id="btnSubmit">Criar</button>
     </form>
 
@@ -26,6 +27,7 @@
 
     <script src="js/toast.js"></script>
     <script src="js/api.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="js/listas.js"></script>
 </body>
 </html>
