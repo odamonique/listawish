@@ -31,20 +31,27 @@ async function carregarLista() {
 
         itens.forEach(item => {
 
-            const li = document.createElement("li");
+            const div = document.createElement("div");
+            div.classList.add("item");
 
-            li.innerHTML = `<strong>${item.nome}</strong> 
-            ${item.url ? `<a href="${item.url}" target="_blank">Link</a>` : ""}<br>
-            status: ${item.status}<br>
-            ${item.status !== "comprado" ? `<button onclick="comprarItem(${item.id})">
-            Marcar como comprado</button>` : "comprado"}<hr>`;
+            div.innerHTML = 
+            `<div>
+                <strong>${item.nome}</strong> 
+                ${item.url ? `<a href="${item.url}" target="_blank">Link</a>` : ""}<br>
+                status: ${item.status}
+            </div>
+            <div>
+                ${item.status !== "comprado" ? `<button onclick="comprarItem(${item.id})">
+                Marcar como comprado</button>` : "comprado"}
+            </div>`;
 
             //Visual 
             if (item.status === "comprado") {
-                li.style.textDecoration = "line-through";
+                //li.style.textDecoration = "line-through";
+                div.classList.add("comprado");
             }
 
-            ul.appendChild(li);
+            ul.appendChild(div);
         });
 
 

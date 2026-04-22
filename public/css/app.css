@@ -1,0 +1,41 @@
+.container {
+    max-width: 800px;
+}
+
+.topo{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.card {
+    background: #fafafa;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+
+.item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+}
+
+.item a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.item.comprado {
+    opacity: 0.6;
+}
+
+.item.comprado strong {
+    text-decoration: line-through;
+}

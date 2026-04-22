@@ -76,14 +76,15 @@ async function carregarListas() {
         const ul = document.getElementById("listas");
         ul.innerHTML = "";
 
-        //Cria um li para cada lista recebida
+        //Cria um card para cada lista recebida
         listas.forEach(lista => {
-            const li = document.createElement("li");
+            const card = document.createElement("div");
+            card.classList.add("card")
 
             //Adicionar link publico
             const link = `${window.location.origin}/lista-publica.html?token=${lista.linkToken}`;
 
-            li.innerHTML =`
+            card.innerHTML =`
             <strong>${lista.titulo}</strong> - ${lista.descricao || ""}<br>
             Expira: ${new Date(lista.dataExpiracao).toLocaleDateString('pt-BR')}<br> 
             <button onclick = "editarLista(${lista.id}, '${lista.titulo}', 
@@ -91,10 +92,10 @@ async function carregarListas() {
             <button onclick = "verLista('${lista.id}')">Abrir</button>
             <button onclick = "deletarLista(${lista.id})">Deletar</button><br>
             <a href="${link}" onclick="copiarLink(event, this)" rel="noopener noreferrer" title="Ao clicar, o link será copiado para você compartilhar com seus amigos, e a página da sua lista será aberta para você visualizar!">
-            🔗 Copiar e abrir link</a><hr>
+            🔗 Copiar e abrir link</a>
             `;
 
-            ul.appendChild(li);
+            ul.appendChild(card);
         });
         
     } catch (error) {

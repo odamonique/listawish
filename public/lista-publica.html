@@ -3,17 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/app.css">
     <title>Lista Pública</title>
 </head>
 <body>
-    <h2 id="titulo"></h2>
-    <p id="descricao"></p>
-    <p id="dataExpiracao"></p>
+    <div class="container">
+        <div id="inicial">
+            <h1 id="titulo"></h2>
+            <p id="descricao"></p>
+            <p id="dataExpiracao"></p>
+        </div>
+        <h3>Itens</h3>
 
-    <h3>Itens</h3>
-
-    <ul id="itens"></ul>
-
+        <div id="itens"></div>
+    </div>
 
     <script src="js/toast.js"></script>
     <script src="js/api.js"></script>

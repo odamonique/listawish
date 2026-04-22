@@ -3,25 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/app.css">
     <title>Lista</title>
 </head>
 <body>
-    <h2 id="tituloLista">Itens da Lista</h2>
+    <div class="container">
+    <div class="topo">
+        <h2 id="tituloLista">Itens da Lista</h2> 
+        <button onclick="voltar()" class="btn-voltar">Voltar</button>
+    </div>
 
-    <button onclick="voltar()">Voltar</button>
 
-    <h3>Adicionar Item</h3>
+        <h3>Adicionar Item</h3>
 
-    <form id="formItem">
-        <input type="text" id="nome" placeholder="Nome do item" required><br>
-        <input type="text" id="url" placeholder="URL"><br>
-        <button type="submit">Adicionar</button>
-    </form>
+        <form id="formItem">
+            <input type="text" id="nome" placeholder="Nome do item" required><br>
+            <input type="text" id="url" placeholder="URL"><br>
+            <button type="submit">Adicionar</button>
+        </form>
 
-    <h3>Itens</h3>
+        <h3>Itens</h3>
 
-    <ul id="itens"></ul>
-
+        <div id="itens"></div>
+    </div>
     <script src="js/toast.js"></script>
     <script src="js/api.js"></script>
     <script src="js/itens.js"></script>

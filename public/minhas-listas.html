@@ -4,27 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/app.css">
     <title>Minhas Listas</title>
 </head>
 <body>
+    <div class="container">
+        <h2 id="inicial">Minhas Listas</h2>
 
-    <h2>Minhas Listas</h2>
+        <!-- <button onclick="logout()">Sair</button> -->
 
-    <button onclick="logout()">Sair</button>
+        <h3>Criar Nova Lista</h3>
 
-    <h3>Criar Nova Lista</h3>
+        <form id="formLista">
+            <input type="text" id="titulo" placeholder="Título" require><br>
+            <input type="text" id="descricao" placeholder="Descrição"><br>
+            <input type="text" id="dataExpiracao" placeholder="Data de expiração" required><br>
+            <button type="submit" id="btnSubmit">Criar</button>
+        </form>
 
-    <form id="formLista">
-        <input type="text" id="titulo" placeholder="Título" require><br>
-        <input type="text" id="descricao" placeholder="Descrição"><br>
-        <input type="text" id="dataExpiracao" placeholder="Data de expiração" required><br>
-        <button type="submit" id="btnSubmit">Criar</button>
-    </form>
+        <h3>Suas Listas</h3>
 
-    <h3>Suas Listas</h3>
-
-    <ul id="listas"></ul>
-
+        <div id="listas"></div>
+        <button onclick="logout()">Sair</button>
+    </div>
     <script src="js/toast.js"></script>
     <script src="js/api.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>

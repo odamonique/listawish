@@ -71,14 +71,20 @@ async function carregarItens() {
 
         ////Cria um li para cada lista recebida
         itens.forEach(item => {
-            const li = document.createElement("li");
+            const div = document.createElement("div");
+            div.classList.add("item");
 
-            li.innerHTML = `<strong>${item.nome}</strong>
-            ${item.url ? `<a href = "${item.url}" target = "_blank">Link</a>` : ""} <br>
-            Status: ${item.status}<br>
-            <button onclick = "deletarItem(${item.id})">Deletar</button> <hr>`;
+            div.innerHTML = 
+            `<div>
+                <strong>${item.nome}</strong>
+                ${item.url ? `<a href = "${item.url}" target = "_blank">Link</a>` : ""} <br>
+                Status: ${item.status}
+            </div>
+            <div>
+                <button onclick = "deletarItem(${item.id})">Deletar</button>
+            </div>`;
 
-            ul.appendChild(li);
+            ul.appendChild(div);
 
         });
 
