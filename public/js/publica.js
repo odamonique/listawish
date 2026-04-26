@@ -36,13 +36,13 @@ async function carregarLista() {
 
             div.innerHTML = 
             `<div>
-                <strong>${item.nome}</strong><br>
+                <h3>${item.nome}</h3><br>
                 ${item.url ? `<a href="${item.url}" target="_blank">Link</a>` : ""}<br>
                 <!--status: ${item.status}-->
             </div>
             <div>
                 ${item.status !== "comprado" ? `<button onclick="comprarItem(${item.id})">
-                Marcar como comprado</button>` : "comprado"}
+                Comprar</button>` : "✔️comprado"}
             </div>`;
 
             //Visual 
@@ -81,7 +81,7 @@ async function comprarItem(id) {
     if (!confirmou) {
         return;
     }
-    
+
     try {
         await apiRequest(`/public/lista/${token}/item/${id}`, "PATCH", {status: "comprado"});
 

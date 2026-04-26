@@ -27,6 +27,21 @@
     border-bottom: 1px solid #eee;
 }
 
+
+.item button {
+    background: transparent;
+    color: #007bff;
+    border: 1px solid #007bff;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.15s ease;
+}
+
+.item button:hover {
+    background: #007bff;
+    color: white;
+}
+
 .item a {
     color: #007bff;
     text-decoration: none;
@@ -36,6 +51,6 @@
     opacity: 0.6;
 }
 
-.item.comprado strong {
+/*.item.comprado h3 {
     text-decoration: line-through;
-}
+}*/

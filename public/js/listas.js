@@ -88,10 +88,10 @@ async function carregarListas() {
             card.innerHTML =`
             <strong>${lista.titulo}</strong> - ${lista.descricao || ""}<br>
             Expira: ${new Date(lista.dataExpiracao).toLocaleDateString('pt-BR')}<br> 
-            <button onclick = "editarLista(${lista.id}, '${lista.titulo}', 
-            '${lista.descricao || ''}', '${lista.dataExpiracao}')">Editar</button>
-            <button onclick = "verLista('${lista.id}')">Abrir</button>
-            <button onclick = "deletarLista(${lista.id})">Deletar</button><br>
+            <button class="btn-small" onclick = "editarLista(${lista.id}, '${lista.titulo}', 
+            '${lista.descricao || ''}', '${lista.dataExpiracao}')">✏️ Editar</button>
+            <button class="btn-small" onclick = "verLista('${lista.id}')">🔍 Abrir</button>
+            <button class="btn-small btn-danger" onclick = "deletarLista(${lista.id})">🗑️ Deletar</button><br>
             <a href="${link}" onclick="copiarLink(event, this)" rel="noopener noreferrer" title="Copia o link para compartilhar">
             🔗 Copiar link</a>
             `;
