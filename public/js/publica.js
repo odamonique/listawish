@@ -36,9 +36,9 @@ async function carregarLista() {
 
             div.innerHTML = 
             `<div>
-                <strong>${item.nome}</strong> 
+                <strong>${item.nome}</strong><br>
                 ${item.url ? `<a href="${item.url}" target="_blank">Link</a>` : ""}<br>
-                status: ${item.status}
+                <!--status: ${item.status}-->
             </div>
             <div>
                 ${item.status !== "comprado" ? `<button onclick="comprarItem(${item.id})">
@@ -67,9 +67,21 @@ async function carregarLista() {
         }
     }
 };
-
+//Confirmar compra do item 
+function confirmarAcao(mensagem) {
+    return new Promise((resolve) => {
+        const ok = confirm(mensagem);
+        resolve(ok);
+    });
+}
 //Marcar como comprado 
 async function comprarItem(id) {
+
+    const confirmou = await confirmarAcao("Tem certeza que deseja marcar como comprado?");
+    if (!confirmou) {
+        return;
+    }
+    
     try {
         await apiRequest(`/public/lista/${token}/item/${id}`, "PATCH", {status: "comprado"});
 

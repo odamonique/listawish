@@ -28,10 +28,10 @@ const criarLista = async (req, res) => {
             usuarioId
         );
 
-        return res.status(201).json({
-            message: "Lista criada com sucesso!",
-            lista: novaLista
-        });
+        return res.status(201).json(
+            //{message: "Lista criada com sucesso!",lista: novaLista}
+            novaLista
+        );
     } catch (error) {
         console.error(error);
 

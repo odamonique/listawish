@@ -49,15 +49,16 @@ document.getElementById("formLista").addEventListener("submit", async (e) => {
             delete e.target.dataset.id;
         }else{
             //Criar 
-            await apiRequest('/listas', "POST", {
+            const novaLista = await apiRequest('/listas', "POST", {
             titulo, descricao, dataExpiracao
             });
+            //Redirecionar para a lista criada
+            console.log(novaLista);
+            verLista(novaLista.id);
+            //limpar campos do formulario 
+            e.target.reset();
+            return;
         }
-
-        //Atualiza as listas 
-        carregarListas();
-        //limpar campos do formulario 
-        e.target.reset();
 
         //Voltar o botão para modo de criar 
         document.getElementById("btnSubmit").innerText = "Criar";
