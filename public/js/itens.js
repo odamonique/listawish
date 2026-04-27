@@ -30,9 +30,9 @@ document.getElementById("formItem").addEventListener("submit", async (e) => {
         await apiRequest("/itens", "POST", {
             nome, url, listaId
         });
-
         //Atualizar itens
         carregarItens();
+        toast("Item adicionado!");
         e.target.reset();
         
     } catch (error) {

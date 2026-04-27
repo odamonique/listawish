@@ -45,6 +45,7 @@ document.getElementById("formLista").addEventListener("submit", async (e) => {
                 titulo, descricao, dataExpiracao
             });
 
+            toast("Lista alterada com sucesso.");
             //Limpar modo de edição 
             delete e.target.dataset.id;
         }else{
