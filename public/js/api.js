@@ -35,13 +35,16 @@ async function apiRequest(endpoint, method = "GET", body = null) {
     if (response.status === 401) {
         localStorage.clear();
         toast("Sessão expirada. Faça login novamente");
-        setTimeout(() => logout(), 5000);
-        return;
+        setTimeout(() => logout(), 4000);
+        throw { status: 401 };
     }
 
     //Lança erro se a resposta não for ok
     if (!response.ok) {
-        throw new Error(data.error || "Erro na requisição");
+        //throw new Error(data.error || "Erro na requisição");
+        const error = new Error(data.error || "Erro na requisição");
+        error.status = response.status;
+        throw error;
     }
 
     //retorna os dados JSON da API
