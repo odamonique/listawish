@@ -81,7 +81,7 @@ async function carregarItens() {
                 Status: ${item.status}
             </div>
             <div>
-                <button onclick = "deletarItem(${item.id})">Deletar</button>
+                <button class="btn-small btn-danger" onclick = "deletarItem(${item.id})">🗑️ Deletar</button>
             </div>`;
 
             ul.appendChild(div);

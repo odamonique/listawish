@@ -22,3 +22,9 @@ button {
     border-radius: 5px;
     cursor: pointer;
 }
+
+button:hover {
+    background-color: #4CAF50 !important;
+    color: white !important;
+    border: none !important;
+}

@@ -6,6 +6,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
     margin-bottom: 20px;
 }
 
@@ -22,9 +24,13 @@
 .item {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    /*align-items: center;*/
     padding: 12px;
     border-bottom: 1px solid #eee;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 10px;
+
 }
 
 
@@ -39,6 +45,22 @@
 
 .item button:hover {
     background: #007bff;
+    color: white;
+}
+
+.item .btn-small{
+    padding: 4px 8px;
+    font-size: 12px;
+    background: transparent;
+    color: #444;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.item .btn-danger:hover {
+    background: #dc3545;
     color: white;
 }
 
