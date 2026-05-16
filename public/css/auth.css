@@ -1,30 +1,79 @@
-.container {
-    max-width: 400px;
+/*AUTH LAYOUT*/
+
+.auth-page {
+    min-height: calc(100vh - 180px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 40px 20px;
+}
+
+/*AUTH CARD*/
+
+.auth-card {
+    width: 100%;
+    max-width: 460px;
+
+    background: var(--surface);
+
+    border-radius: var(--radius-lg);
+
+    padding: 42px;
+
+    box-shadow: var(--shadow);
+}
+
+/*AUTH HEADER*/
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.auth-logo {
+    width: 82px;
+    margin: 0 auto 18px;
+}
+
+.auth-header h2 {
+    margin-bottom: 10px;
+}
+
+.auth-header p {
+    font-size: 0.95rem;
+}
+
+/*FORM*/
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.auth-form button {
+  margin-top: 10px;
+}
+
+/*AUTH FOOTER*/
+
+.auth-footer {
+    margin-top: 24px;
     text-align: center;
 }
 
-h1, h2 {
-    margin-bottom: 20px;
+.auth-footer a {
+    color: var(--primary);
+    font-weight: 600;
 }
 
-input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-}
+/*RESPONSIVE*/
 
-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
+@media (max-width: 500px) {
 
-button:hover {
-    background-color: #4CAF50 !important;
-    color: white !important;
-    border: none !important;
+    .auth-card {
+    padding: 30px 24px;
+  }
+
 }
