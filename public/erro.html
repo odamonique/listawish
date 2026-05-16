@@ -3,15 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--Melhora performance da fonte-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!--Fonte Poppins-->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" 
+    rel="stylesheet">
+    <!--CSS do projeto-->
     <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/components.css">
+    
     <title>Erro</title>
 </head>
 <body>
+    <div id="navbar"></div>
     <div class="container" id="erro-container">
         <h1 id="titulo">Erro</h1>
         <p id="descricao">Algo deu errado.</p>
     </div>
+    <div id="footer"></div>
 
+    <script src="/js/components.js"></script>
     <script src="js/erro.js"></script>
     <script src="js/api.js"></script>
 </body>

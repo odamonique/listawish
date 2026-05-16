@@ -3,11 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--Melhora performance da fonte-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!--Fonte Poppins-->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" 
+    rel="stylesheet">
+    <!--CSS do projeto-->
     <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/components.css">
     <link rel="stylesheet" href="/css/app.css">
+    
     <title>Lista Pública</title>
 </head>
 <body>
+    <div id="navbar"></div>
     <div class="container">
         <div id="inicial">
             <h1 id="titulo"></h2>
@@ -17,7 +29,9 @@
 
         <div id="itens"></div>
     </div>
+    <div id="footer"></div>
 
+    <script src="/js/components.js"></script>
     <script src="js/toast.js"></script>
     <script src="js/api.js"></script>
     <script src="js/publica.js"></script>

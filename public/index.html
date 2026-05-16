@@ -3,19 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--Melhora performance da fonte-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!--Fonte Poppins-->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" 
+    rel="stylesheet">
+    <!--CSS do projeto-->
     <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/components.css">
+
     <title>ListaWish</title>
 </head>
 <body>
-    <div id="inicial" class="container">
-        <h1><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="icon">
-        <path d="M9.375 3a1.875 1.875 0 0 0 0 3.75h1.875v4.5H3.375A1.875 1.875 0 0 1 1.5 9.375v-.75c0-1.036.84-1.875 1.875-1.875h3.193A3.375 3.375 0 0 1 12 2.753a3.375 3.375 0 0 1 5.432 3.997h3.943c1.035 0 1.875.84 1.875 1.875v.75c0 1.036-.84 1.875-1.875 1.875H12.75v-4.5h1.875a1.875 1.875 0 1 0-1.875-1.875V6.75h-1.5V4.875C11.25 3.839 10.41 3 9.375 3ZM11.25 12.75H3v6.75a2.25 2.25 0 0 0 2.25 2.25h6v-9ZM12.75 12.75v9h6.75a2.25 2.25 0 0 0 2.25-2.25v-6.75h-9Z" />
-        </svg>ListaWish</h1>
+    <div id="navbar"></div>
+    <main class="container">
 
-        <h3 id="subtitulo">Crie e compartilhe listas de presentes facilmente!</h3>
+        <section class="hero">
 
-        <a href="login.html" class="btn">Fazer Login</a>
-        <a href="cadastro.html" class="btn">Criar Conta</a>
-    </div>
+            <div class="hero-content">
+
+                <span class="badge">Organize presentes com elegância</span>
+
+                <h1>Crie listas de presentes compartilháveis</h1>
+
+                <p>Organize aniversários, casamentos e eventos especiais
+                    de forma simples, moderna e prática.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="login.html" class="btn">Fazer Login</a>
+                    <a href="cadastro.html" class="btn btn-outline">Criar Conta</a>
+                </div>
+
+            </div>
+
+            <div class="hero-image">
+            <img src="/assets/gift-hero.png" alt="ListaWish">
+            </div>
+
+        </section>
+
+    </main>
+
+    <div id="footer"></div>
+
+    <script src="/js/components.js"></script>
 </body>
 </html>
