@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
         dateFormat: "Y-m-d", 
         minDate: hoje,
 
-        onchange: function (selectedDates, dateStr, instance) {
+        onChange: function (selectedDates, dateStr, instance) {
             instance.close();
         }
     })
@@ -86,22 +86,49 @@ async function carregarListas() {
         //Cria um card para cada lista recebida
         listas.forEach(lista => {
             const card = document.createElement("div");
-            card.classList.add("card")
+            card.classList.add("lista-card")
 
             //Adicionar link publico
             const link = `${window.location.origin}/lista-publica.html?token=${lista.linkToken}`;
 
-            card.innerHTML =`
-            <strong>${lista.titulo}</strong> - ${lista.descricao || ""}<br>
-            Expira: ${new Date(lista.dataExpiracao).toLocaleDateString('pt-BR')}<br> 
-            <button class="btn-small" onclick = "editarLista(${lista.id}, '${lista.titulo}', 
-            '${lista.descricao || ''}', '${lista.dataExpiracao}')">✏️ Editar</button>
-            <button class="btn-small" onclick = "verLista('${lista.id}')">🔍 Abrir</button>
-            <button class="btn-small btn-danger" onclick = "deletarLista(${lista.id})">🗑️ Deletar</button><br>
-            <a href="${link}" onclick="copiarLink(event, this)" rel="noopener noreferrer" title="Copia o link para compartilhar">
-            🔗 Copiar link</a>
-            `;
+            card.innerHTML = `
 
+            <div class="lista-card-header">
+
+                <div class="lista-card-title">
+                    <h3>${lista.titulo}</h3>
+                    <p class="lista-card-description">${lista.descricao || "Sem descrição"}</p>
+                </div>
+
+            </div>
+
+            <div class="lista-card-footer">
+
+                <small>
+                    Expira em: ${new Date(lista.dataExpiracao).toLocaleDateString('pt-BR')}
+                </small>
+
+                <div class="lista-card-actions">
+
+                    <button class="btn-outline" onclick="editarLista(
+                        ${lista.id},
+                        '${lista.titulo.replace(/'/g, "\\'")}',
+                        '${(lista.descricao || '').replace(/'/g, "\\'")}',
+                        '${lista.dataExpiracao}')">✏️ Editar
+                    </button>
+
+                    <button onclick="verLista('${lista.id}')">🔍 Abrir</button>
+
+                    <button class="btn-danger" onclick="deletarLista(${lista.id})">🗑️ Deletar</button>
+
+                    <button class="btn-outline" onclick="copiarLink(event, this)" data-link="${link}">
+                        🔗 Compartilhar
+                    </button>
+
+                </div>
+
+            </div>`;
+            
             ul.appendChild(card);
         });
         
@@ -154,7 +181,7 @@ function editarLista(id, titulo, descricao, dataExpiracao) {
 function copiarLink(e, element) {
     e.preventDefault();
         
-    const link = element.href;
+    const link = element.dataset.link;
 
     navigator.clipboard.writeText(link).then(() =>{
         toast(

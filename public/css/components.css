@@ -180,3 +180,20 @@ section {
   }
 
 }
+
+/*SMALL BUTTON VARIANTS*/
+
+.btn-danger {
+    background: var(--danger);
+}
+
+.btn-danger:hover {
+    opacity: 0.9;
+}
+
+/*SMALL TEXT*/
+
+small {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}

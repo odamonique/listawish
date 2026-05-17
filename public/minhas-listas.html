@@ -16,30 +16,55 @@
     <link rel="stylesheet" href="/css/layout.css">
     <link rel="stylesheet" href="/css/components.css">
     <link rel="stylesheet" href="/css/app.css">
-    
+
     <title>Minhas Listas</title>
 </head>
 <body>
     <div id="navbar"></div>
-    <div class="container">
-        <h2 id="inicial">Minhas Listas</h2>
+    <main class="container dashboard-page">
 
-        <!-- <button onclick="logout()">Sair</button> -->
+        <section class="dashboard-header">
 
-        <h3>Criar Nova Lista</h3>
+            <div>
+                <span class="badge">Suas listas personalizadas</span>
 
-        <form id="formLista">
-            <input type="text" id="titulo" placeholder="Título" required><br>
-            <input type="text" id="descricao" placeholder="Descrição"><br>
-            <input type="text" id="dataExpiracao" placeholder="Data de expiração" required><br>
-            <button type="submit" id="btnSubmit">Criar</button>
-        </form>
+                <h1>Minhas Listas</h1>
 
-        <h3>Suas Listas</h3>
+                <p>Organize aniversários, casamentos e momentos especiais.</p>
+            </div>
 
-        <div id="listas"></div>
-        <button onclick="logout()">Sair</button>
-    </div>
+            <button onclick="logout()" class="btn-outline">Sair</button>
+
+        </section>
+
+        <section class="card create-list-card">
+
+            <div class="section-title">
+                <h3>Criar Nova Lista</h3>
+                <p>Crie uma nova lista compartilhável.</p>
+            </div>
+
+            <form id="formLista" class="form-grid">
+                <input type="text" id="titulo" placeholder="Título da lista" required>
+                <input type="text" id="descricao" placeholder="Descrição">
+                <input type="text" id="dataExpiracao" placeholder="Data de expiração" required>
+                <button type="submit" id="btnSubmit">Criar Lista</button>
+            </form>
+
+        </section>
+
+        <section class="listas-section">
+
+            <div class="section-title">
+                <h3>Suas Listas</h3>
+                <p>Gerencie e compartilhe suas listas.</p>
+            </div>
+
+            <div id="listas" class="listas-grid"></div>
+
+        </section>
+
+    </main>
     <div id="footer"></div>
 
     <script src="/js/components.js"></script>
