@@ -46,11 +46,10 @@ document.getElementById("formLista").addEventListener("submit", async (e) => {
             });
 
             //Atualiza as listas 
-            carregarListas();
-            //limpar campos do formulario 
-            e.target.reset();
-            //Limpar modo de edição 
-            delete e.target.dataset.id;
+            await carregarListas();
+            //Resetar tudo 
+            resetarFormulario();
+
             toast("Sua lista foi alterada com sucesso!")
 
         }else{
@@ -66,16 +65,13 @@ document.getElementById("formLista").addEventListener("submit", async (e) => {
             return;
         }
 
-        //Voltar o botão para modo de criar 
-        document.getElementById("btnSubmit").innerText = "Criar";
-
     } catch (error) {
         toast(error.message);
     }
     
 });
 
-//Buca listas 
+//Busca listas 
 async function carregarListas() {
     try {
         const listas = await apiRequest("/listas");
@@ -128,7 +124,7 @@ async function carregarListas() {
                 </div>
 
             </div>`;
-            
+
             ul.appendChild(card);
         });
         
@@ -174,8 +170,37 @@ function editarLista(id, titulo, descricao, dataExpiracao) {
     document.getElementById("formLista").dataset.id = id;
 
     //Mudar botão para modo salvar
-    document.getElementById("btnSubmit").innerText = "Salvar";
+    document.getElementById("btnSubmit").innerText = "Salvar Alterações";
+
+    //Alterar título do formulário
+    document.getElementById("formTitle").innerText = "Editando Lista";
+
+    document.getElementById("formSubtitle").innerText = "Atualize as informações da sua lista.";
+
+    //Destacar card
+    document.getElementById("formCard").classList.add("editing");
+
+    //Scroll suave até o formulário
+    document.getElementById("formCard").scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
 };
+
+function resetarFormulario() {
+
+    document.getElementById("formLista").reset();
+
+    delete document.getElementById("formLista").dataset.id;
+
+    document.getElementById("btnSubmit").innerText = "Criar Lista";
+
+    document.getElementById("formTitle").innerText = "Criar Nova Lista";
+
+    document.getElementById("formSubtitle").innerText = "Crie uma nova lista compartilhável.";
+
+    document.getElementById("formCard").classList.remove("editing");
+}
 
 //Copia o link ao ser clicado
 function copiarLink(e, element) {
@@ -199,3 +224,4 @@ function copiarLink(e, element) {
     });
 
 }
+
