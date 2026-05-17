@@ -103,23 +103,6 @@
     flex-wrap: wrap;
 }
 
-/*ITENS*/
-.item {
-    display: flex;
-    justify-content: space-between;
-    /*align-items: center;*/
-    padding: 12px;
-    border-bottom: 1px solid #eee;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    gap: 10px;
-
-}
-
-.item.comprado {
-    opacity: 0.6;
-}
-
 /*RESPONSIVE*/
 
 @media (max-width: 768px) {
@@ -133,5 +116,125 @@
     flex-direction: column;
     align-items: flex-start;
   }
+
+}
+
+/*LISTA PAGE*/
+
+.lista-page {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/*LISTA HEADER*/
+
+.lista-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+.lista-header p {
+    max-width: 500px;
+}
+
+/*ITENS GRID*/
+
+.itens-grid {
+    display: grid;
+
+    grid-template-columns:
+    repeat(auto-fit, minmax(320px, 1fr));
+
+    gap: 20px;
+}
+
+/*ITEM CARD*/
+
+.item-card {
+    background: var(--surface);
+
+    border-radius: var(--radius-md);
+
+    padding: 24px;
+
+    box-shadow: var(--shadow);
+
+    transition: var(--transition);
+
+    border: 1px solid rgba(255,255,255,0.5);
+}
+
+.item-card:hover {
+    transform: translateY(-4px);
+}
+
+/*ITEM HEADER*/
+
+.item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    gap: 16px;
+
+    margin-bottom: 18px;
+}
+
+/*ITEM STATUS*/
+
+.item-status {
+    display: inline-flex;
+
+    padding: 8px 14px;
+
+    border-radius: 999px;
+
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.item-status.disponivel {
+    background: rgba(111,166,122,0.15);
+    color: var(--success);
+}
+
+.item-status.comprado {
+    background: rgba(217,83,79,0.15);
+    color: var(--danger);
+}
+
+/*ITEM LINK*/
+
+.item-link {
+    display: inline-flex;
+
+    margin-top: 14px;
+
+    color: var(--primary);
+
+    font-weight: 600;
+}
+
+/*ITEM ACTIONS*/
+
+.item-actions {
+    margin-top: 24px;
+
+    display: flex;
+    justify-content: flex-end;
+}
+
+/*RESPONSIVE*/
+
+@media (max-width: 768px) {
+
+    .lista-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 
 }

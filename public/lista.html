@@ -15,30 +15,48 @@
     <link rel="stylesheet" href="/css/layout.css">
     <link rel="stylesheet" href="/css/components.css">
     <link rel="stylesheet" href="/css/app.css">
-    
+
     <title>Lista</title>
 </head>
 <body>
     <div id="navbar"></div>
-    <div class="container">
-    <div class="topo">
-        <h2 id="tituloLista">Itens da Lista</h2> 
-        <button onclick="voltar()" class="btn-voltar">Finalizar</button>
-    </div>
+    <main class="container lista-page">
 
+        <section class="lista-header">
+            <div>
+                <span class="badge">Organize seus presentes</span>
 
-        <h3>Adicionar Item</h3>
+                <h1 id="tituloLista">Itens da Lista</h1>
 
-        <form id="formItem">
-            <input type="text" id="nome" placeholder="Nome do item" required><br>
-            <input type="text" id="url" placeholder="URL"><br>
-            <button type="submit">Adicionar</button>
-        </form>
+                <p>Seus presentes em um só lugar.</p>
+            </div>
+            <button onclick="voltar()" class="btn-outline">Finalizar</button>
+        </section>
 
-        <h3>Itens</h3>
+        <section class="card">
 
-        <div id="itens"></div>
-    </div>
+            <div class="section-title">
+                <h3>Adicionar Item</h3>
+                <p>Adicione presentes à sua lista.</p>
+            </div>
+
+            <form id="formItem" class="form-grid">
+                <input type="text" id="nome" placeholder="Nome do item" required>
+                <input type="text" id="url" placeholder="URL do produto">                
+                <button type="submit">Adicionar Item</button>
+            </form>
+
+        </section>
+
+        <section>
+            <div class="section-title">
+                <h3>Itens da Lista</h3>
+                <p>Acompanhe os presentes adicionados.</p>
+            </div>
+            <div id="itens" class="itens-grid"></div>
+        </section>
+
+    </main>
     <div id="footer"></div>
 
     <script src="/js/components.js"></script>

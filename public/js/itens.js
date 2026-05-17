@@ -72,16 +72,21 @@ async function carregarItens() {
         ////Cria um li para cada lista recebida
         itens.forEach(item => {
             const div = document.createElement("div");
-            div.classList.add("item");
+            div.classList.add("item-card");
 
             div.innerHTML = 
-            `<div>
-                <strong>${item.nome}</strong>
-                ${item.url ? `<a href = "${item.url}" target = "_blank">Link</a>` : ""} <br>
-                Status: ${item.status}
+            `<div class="item-header">
+                <div>
+                    <h3>${item.nome}</h3>
+                    <span class="item-status ${item.status === "comprado" ? "comprado" : "disponivel"}">
+                    ${item.status === "comprado" ? "Comprado" : "Disponível"}</span>
+                </div>
             </div>
-            <div>
-                <button class="btn-small btn-danger" onclick = "deletarItem(${item.id})">🗑️ Deletar</button>
+
+            ${item.url ? `<a href="${item.url}" target="_blank" class="item-link">🔗 Ver produto</a>` : ""}
+
+            <div class="item-actions">
+                <button class="btn-danger" onclick="deletarItem(${item.id})">🗑️ Deletar</button>
             </div>`;
 
             ul.appendChild(div);
