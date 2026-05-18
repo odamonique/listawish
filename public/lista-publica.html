@@ -15,21 +15,47 @@
     <link rel="stylesheet" href="/css/layout.css">
     <link rel="stylesheet" href="/css/components.css">
     <link rel="stylesheet" href="/css/app.css">
-    
+
     <title>Lista Pública</title>
 </head>
 <body>
-    <div id="navbar"></div>
-    <div class="container">
-        <div id="inicial">
-            <h1 id="titulo"></h2>
-            <h3 id="descricao"></h3>
-            <p id="dataExpiracao"></p>
-        </div>
+    <main class="public-page">
 
-        <div id="itens"></div>
-    </div>
-    <div id="footer"></div>
+        <section class="public-hero">
+
+            <div class="public-logo">
+                <img src="/assets/logo.png" alt="ListaWish">
+                <span>ListaWish</span>
+            </div>
+
+            <div class="public-hero-content">
+
+                <div class="public-text">
+                    <h1 id="titulo"></h1>
+                    <p id="descricao"></p>
+                    <small id="dataExpiracao"></small>
+                </div>
+
+                <div class="public-image">
+                    <img src="/assets/gift-hero.png" alt="Gift">
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="public-list-section">
+
+            <div class="section-title">
+                <h2>Presentes</h2>
+                <p>Escolha um presente e marque como comprado.</p>
+            </div>
+
+            <div id="itens" class="public-itens-grid"></div>
+
+        </section>
+
+    </main>
 
     <script src="/js/components.js"></script>
     <script src="js/toast.js"></script>

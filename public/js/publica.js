@@ -32,24 +32,32 @@ async function carregarLista() {
         itens.forEach(item => {
 
             const div = document.createElement("div");
-            div.classList.add("item");
+            div.classList.add("public-item-card");
 
-            div.innerHTML = 
-            `<div>
-                <h3>${item.nome}</h3><br>
-                ${item.url ? `<a href="${item.url}" target="_blank">Link</a>` : ""}<br>
-                <!--status: ${item.status}-->
-            </div>
-            <div>
-                ${item.status !== "comprado" ? `<button onclick="comprarItem(${item.id})">
-                Comprar</button>` : "✔️comprado"}
-            </div>`;
-
-            //Visual 
-            if (item.status === "comprado") {
-                //li.style.textDecoration = "line-through";
+            if(item.status === "comprado") {
                 div.classList.add("comprado");
             }
+
+            div.innerHTML = 
+            `<div class="public-item-top">
+                <div>
+                    <h3>${item.nome}</h3>
+                    <span class="public-status ${item.status === "comprado" ? "comprado" : "disponivel"}">
+                        ${item.status === "comprado" ? "Comprado" : "Disponível"}
+                    </span>
+                </div>
+            </div>
+
+            ${item.url ? `<a href="${item.url}" target="_blank" class="public-link">🔗 Ver produto</a>` : ""}
+
+            <div class="public-actions">
+
+                ${item.status !== "comprado" ? `
+                    <button onclick="comprarItem(${item.id})">Confirmar Presente</button>` : `
+                    <button disabled>✔️ Presente reservado</button>`
+                }
+
+            </div>`;
 
             ul.appendChild(div);
         });
